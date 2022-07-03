@@ -69,3 +69,4 @@ def new_freecomment(request, post_id):
         finished_form.save()
     return redirect('freedetail', post_id)
 
+
