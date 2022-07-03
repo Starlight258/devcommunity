@@ -9,14 +9,16 @@
   >작성자 : {{ post_detail.author }}</span
 >
 <hr />
+
 <!-- 댓글 목록 구간-->
-{% for comment in post_detail.comment_set.all %} 작성 날짜:
+{% for comment in post_detail.freecomment_set.all %} 작성 날짜:
 <span class="badge rounded-pill bg-light"> {{comment.date }}</span>
-<span class="badge rounded-pill bg-light"> {{comment }}</span>
+<span class="badge rounded-pill bg-light"> {{comment }}</span> 작성자:
+<span class="badge rounded-pill bg-light"> {{comment.author}}</span>
 <hr />
 {% endfor %}
 <!-- 댓글 입력 구간-->
-<form action="{% url 'new_comment' post_detail.id %}" method="POST">
+<form action="{% url 'new_freecomment' post_detail.id %}" method="POST">
   {% csrf_token %}
   <table>
     {{comment_form}}
