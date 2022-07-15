@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm, CommentForm, FreePostForm, FreeCommentForm
 from .models import Post, FreePost
+from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
     # posts = Post.objects.all() 
     posts = Post.objects.filter().order_by('-date') #오름차순
+    paginator = Paginator(posts, 5) #5개씩 끊어서
+    pagenum = request.GET.get('page') #page가져오기
+    posts= paginator.get_page(pagenum)
     return render(request, 'index.html', {'posts':posts})
 
 def postcreate(request):

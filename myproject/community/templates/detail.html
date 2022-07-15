@@ -5,9 +5,7 @@
 <br />
 <span class="badge rounded-pill bg-light">본문 : {{ post_detail.body }}</span>
 <br />
-<span class="badge rounded-pill bg-light"
-  >작성자 : {{ post_detail.author }}</span
->
+<span class="badge rounded-pill bg-light">작성자 : 익명</span>
 <hr />
 <!-- 댓글 목록 구간-->
 {% for comment in post_detail.comment_set.all %} 작성 날짜:
